@@ -1,5 +1,5 @@
-#include "prototypes.h"
-#include <stdio.h>
+#include "prototypes.h" // очередь реализована односв€зным списком с указател€ми на его начало и конец
+#include <stdio.h> // функцию OUTPQPop можно сократить, использу€ фиктивное звено
 
 void OUTPQPush(outpqueue *&Q, int elem)
 {
@@ -16,7 +16,7 @@ void OUTPQPush(outpqueue *&Q, int elem)
    }
 }
 
-int OUTPQPop(outpqueue *&Q)
+int OUTPQPop(outpqueue *&Q) // функци€ исключени€ элементов: из очереди удал€етс€ элемент с наивысшим приоритетом
 {
    outpqlist *CURR = Q->beg;
    int elem = Q->beg->elem;

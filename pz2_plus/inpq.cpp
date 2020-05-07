@@ -1,7 +1,7 @@
-#include "prototypes.h"
+#include "prototypes.h" // очередь реализована односвязным списком с указателями на его начало и конец
 #include <stdio.h>
 
-void INPQPush(inpqueue *&Q, int elem)
+void INPQPush(inpqueue *&Q, int elem) // функция включения элементов: чем выше приоритет, тем ближе элемент к началу очереди
 {
    if (INPQEmptiness(Q))
    {

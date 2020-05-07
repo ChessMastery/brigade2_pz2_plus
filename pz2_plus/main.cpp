@@ -4,7 +4,7 @@
 #include <conio.h>
 #include "prototypes.h"
 
-int MStack()
+int MStack() // меню для стека
 {
    enum SComands { CMD_SPUSH = 1, CMD_SPRINT, CMD_SPOP, CMD_SCLEAR, CMD_SBACK };
 
@@ -62,7 +62,7 @@ int MStack()
    return 0;
 }
 
-int MQueue()
+int MQueue()  // меню для очереди
 {
 
    enum Comands { CMD_QPUSH = 1, CMD_QPRINT, CMD_QPOP, CMD_QCLEAR, CMD_QBACK };
@@ -121,7 +121,7 @@ int MQueue()
    return 0;
 }
 
-int MInPriorityQueue()
+int MInPriorityQueue() // меню для очереди с приоритетом включения
 {
    enum Comands { CMD_INPQPUSH = 1, CMD_INPQPRINT, CMD_INPQPOP, CMD_INPQCLEAR, CMD_INPQBACK };
 
@@ -179,7 +179,7 @@ int MInPriorityQueue()
    return 0;
 }
 
-int MOutPriorityQueue()
+int MOutPriorityQueue() // меню для очереди с приоритетом исключения
 {
    enum Comands { CMD_OUTPQPUSH = 1, CMD_OUTPQPRINT, CMD_OUTPQPOP, CMD_OUTPQCLEAR, CMD_OUTPQBACK };
 
@@ -237,7 +237,7 @@ int MOutPriorityQueue()
    return 0;
 }
 
-int main()
+int main() // главное меню
 {
    enum Comands { CMD_STACK = 1, CMD_QUEUE, CMD_INPRIORITYQUEUE, CMD_OUTPRIORITYQUEUE, CMD_EXIT };
 

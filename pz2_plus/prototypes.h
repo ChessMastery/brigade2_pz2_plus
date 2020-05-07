@@ -1,7 +1,7 @@
-#ifndef PROTOTYPES_H
-#define PROTOTYPES_H
+#ifndef PROTOTYPES_H // заголовочный файл
+#define PROTOTYPES_H // объ€влены прототипы функций и структуры
 #include <stdlib.h>
-struct slist
+struct slist // стек
 {
    slist *next;
    int elem;
@@ -21,7 +21,7 @@ int SPop(stack *&p, int &num);
 
 void SPrint(const stack *p);
 
-struct qlist
+struct qlist // очередь
 {
    char elem;
    qlist *next;
@@ -45,7 +45,7 @@ int QPop(queue *&Q);
 
 void QPrint(queue *const Q);
 
-struct inpqlist
+struct inpqlist // очередь с приоритетом включени€
 {
    char elem;
    inpqlist *next;
@@ -69,7 +69,7 @@ int INPQPop(inpqueue *&Q);
 
 void INPQPrint(inpqueue *const Q);
 
-struct outpqlist
+struct outpqlist // очередь с приоритетом исключени€
 {
    char elem;
    outpqlist *next;
