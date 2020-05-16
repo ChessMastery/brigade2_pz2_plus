@@ -138,6 +138,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cqueue.cpp" />
+    <ClCompile Include="deque.cpp" />
     <ClCompile Include="inpq.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="outpq.cpp" />

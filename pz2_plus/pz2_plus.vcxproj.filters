@@ -30,6 +30,12 @@
     <ClCompile Include="outpq.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="deque.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cqueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="prototypes.h">

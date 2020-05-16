@@ -93,4 +93,36 @@ int OUTPQPop(outpqueue *&Q);
 
 void OUTPQPrint(outpqueue *const Q);
 
+struct dlist // дек
+{
+   char elem;
+   dlist *prev, *next;
+   dlist(int _elem = 0, dlist *_prev = NULL, dlist *_next = NULL) : elem(_elem), prev(_prev), next(_next) {};
+};
+
+struct deque
+{
+   dlist *beg, *end;
+   deque() : beg(NULL), end(NULL) {};
+};
+
+inline bool DEmptiness(deque *Q)
+{
+   return Q == NULL;
+}
+
+void DBPush(deque *&Q, int elem);
+
+void DEPush(deque *&Q, int elem);
+
+int DBPop(deque *&Q);
+
+int DEPop(deque *&Q);
+
+void DPrint(deque *const Q);
+
+// кольцевая очередь
+
+int QCPop(queue *&Q);
+
 #endif

@@ -237,9 +237,142 @@ int MOutPriorityQueue() // меню для очереди с приоритетом исключения
    return 0;
 }
 
+int MDeque()  // меню для дека
+{
+
+   enum Comands { CMD_QEPUSH = 1, CMD_QBPUSH, CMD_QPRINT, CMD_QBPOP, CMD_QEPOP, CMD_QCLEAR, CMD_QBACK };
+
+   int n = 0, exitFlag = 0, m = 0;
+   deque *Q = NULL;
+   setlocale(LC_CTYPE, "Russian");
+   do
+   {
+      printf_s("<1> - поместить элемент в конец дека\n");
+      printf_s("<2> - поместить элемент в начало дека\n");
+      printf_s("<3> - распечатать содержимое дека\n");
+      printf_s("<4> - извлечь элемент из начала дека\n");
+      printf_s("<5> - извлечь элемент из конца дека\n");
+      printf_s("<6> - очистить данные\n");
+      printf_s("<7> - вернуться к предыдущему меню\n");
+      int repeatFlag = 0;
+      do {
+         printf_s("Введите номер команды (от 1 до 7): ");
+         if (!scanf_s("%d", &n))
+         {
+            printf_s("ошибка ввода\n");
+            _getch();
+            return 1;
+         }
+         switch (n)
+         {
+         case CMD_QEPUSH: printf_s("Введите число: ");
+            if (!scanf_s("%d", &m))
+            {
+               printf_s("ошибка ввода\n");
+               _getch();
+               return 1;
+            }
+            DEPush(Q, m);
+            break;
+         case CMD_QBPUSH: printf_s("Введите число: ");
+            if (!scanf_s("%d", &m))
+            {
+               printf_s("ошибка ввода\n");
+               _getch();
+               return 1;
+            }
+            DBPush(Q, m);
+            break;
+         case CMD_QPRINT: if (DEmptiness(Q))
+            printf_s("Дек пуст\n");
+                        else
+            DPrint(Q);
+            break;
+         case  CMD_QBPOP: DEmptiness(Q) ?
+            printf_s("Дек пуст\n") :
+            printf_s("Из дека извлечен элемент: %d\n", DBPop(Q));
+            break;
+         case  CMD_QEPOP: DEmptiness(Q) ?
+            printf_s("Дек пуст\n") :
+            printf_s("Из дека извлечен элемент: %d\n", DEPop(Q));
+            break;
+         case CMD_QCLEAR: delete Q;
+            Q = NULL;
+            break;
+         case CMD_QBACK: delete Q;
+            Q = NULL;
+            exitFlag = 1;
+            break;
+         default: printf_s("ОШИБКА: неверный номер команды\n");
+            repeatFlag = 1;
+         }
+      } while (!repeatFlag && !exitFlag);
+   } while (!exitFlag);
+   return 0;
+}
+
+int MCQueue()  // меню для кольцевой очереди
+{
+
+   enum Comands { CMD_QPUSH = 1, CMD_QPRINT, CMD_QPOP, CMD_QCLEAR, CMD_QBACK };
+
+   int n = 0, exitFlag = 0, m = 0;
+   queue *Q = NULL;
+   setlocale(LC_CTYPE, "Russian");
+   do
+   {
+      printf_s("<1> - поместить элемент в очередь\n");
+      printf_s("<2> - распечатать содержимое очереди\n");
+      printf_s("<3> - извлечь элемент из очереди\n");
+      printf_s("<4> - очистить данные\n");
+      printf_s("<5> - вернуться к предыдущему меню\n");
+      int repeatFlag = 0;
+      do {
+         printf_s("Введите номер команды (от 1 до 5): ");
+         if (!scanf_s("%d", &n))
+         {
+            printf_s("ошибка ввода\n");
+            _getch();
+            return 1;
+         }
+         switch (n)
+         {
+         case CMD_QPUSH: printf_s("Введите число: ");
+            if (!scanf_s("%d", &m))
+            {
+               printf_s("ошибка ввода\n");
+               _getch();
+               return 1;
+            }
+            QPush(Q, m);
+            break;
+         case CMD_QPRINT: if (QEmptiness(Q))
+            printf_s("Очередь пуста\n");
+                        else
+            QPrint(Q);
+            break;
+         case CMD_QPOP: QEmptiness(Q) ?
+            printf_s("Очередь пуста\n") :
+            printf_s("Из очереди извлечен элемент: %d\n", QCPop(Q));
+            break;
+         case CMD_QCLEAR: delete Q;
+            Q = NULL;
+            break;
+         case CMD_QBACK: delete Q;
+            Q = NULL;
+            exitFlag = 1;
+            break;
+         default: printf_s("ОШИБКА: неверный номер команды\n");
+            repeatFlag = 1;
+         }
+      } while (!repeatFlag && !exitFlag);
+   } while (!exitFlag);
+   return 0;
+}
+
 int main() // главное меню
 {
-   enum Comands { CMD_STACK = 1, CMD_QUEUE, CMD_INPRIORITYQUEUE, CMD_OUTPRIORITYQUEUE, CMD_EXIT };
+   enum Comands { CMD_STACK = 1, CMD_QUEUE, CMD_INPRIORITYQUEUE, CMD_OUTPRIORITYQUEUE, CMD_DEQUE, CMD_CQUEUE, CMD_EXIT };
 
    int n = 0, exitFlag = 0, m = 0;
    setlocale(LC_CTYPE, "Russian");
@@ -250,10 +383,12 @@ int main() // главное меню
       printf_s("<2> - очередь\n");
       printf_s("<3> - очередь с приоритетом включения\n");
       printf_s("<4> - очередь с приоритетом исключения\n");
-      printf_s("<5> - выход\n");
+      printf_s("<5> - дек\n");
+      printf_s("<6> - кольцевая очередь\n");
+      printf_s("<7> - выход\n");
       int repeatFlag = 0;
       do {
-         printf_s("Введите номер команды (от 1 до 3): ");
+         printf_s("Введите номер команды (от 1 до 7): ");
          if (!scanf_s("%d", &n))
          {
             printf_s("ошибка ввода");
@@ -272,6 +407,12 @@ int main() // главное меню
             repeatFlag = 1;
             break;
          case CMD_OUTPRIORITYQUEUE: if (MOutPriorityQueue()) return 1;
+            repeatFlag = 1;
+            break;
+         case CMD_DEQUE: if (MDeque()) return 1;
+            repeatFlag = 1;
+            break;
+         case CMD_CQUEUE: if (MCQueue()) return 1;
             repeatFlag = 1;
             break;
          case CMD_EXIT: exitFlag = 1;
